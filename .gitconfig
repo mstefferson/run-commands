@@ -1,0 +1,17 @@
+[user]
+	name = Michael Stefferson
+	email = mstefferson@gmail.com
+[core]
+	editor = vim
+	autocrlf = input
+[color]
+	ui = true
+[push]
+	default = simple
+[alias]
+	st = status
+	co = checkout
+	ci = commit
+	br = branch
+	df = diff
+	dfs = diff --staged
