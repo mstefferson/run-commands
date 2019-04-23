@@ -1,0 +1,128 @@
+# Mac specific aliases
+
+# ls issues on mac (works on linux)
+alias ll="ls -l"
+alias la="ls -la"
+alias ls="ls"
+alias note='vim +RecentNotes'
+alias cdp='cd ~/Projects'
+alias cdn='cd ~/Drive/Notes'
+alias cdd='cd ~/Work/Divirod'
+
+# skim
+alias skim='open -a skim'
+
+# open desktop
+alias od='open ~/Desktop'
+
+# open text edit
+text() {
+  open -a TextEdit $1
+}
+
+# Google
+google() {
+      search=""
+      echo "Googling: $@"
+      for term in $@; do
+      search="$search%20$term"
+      done
+      open http://www.google.com/search?q=$search
+}
+
+scholar() {
+      search=""
+      echo "Schoogling: $@"
+      for term in $@; do
+      search="$search%20$term"
+      done
+      open http://scholar.google.com/scholar?q=$search
+}
+
+gmail(){
+  open http://gmail.com
+}
+
+youtube(){
+      search=""
+      echo "youtubing: $@"
+      for term in $@; do
+      search="$search%20$term"
+      done
+      open http://www.youtube.com/results?search_query=$search
+}
+
+weather(){
+      search="%20weather"
+      echo "Weathering: $@"
+      for term in $@; do
+      search="$search%20$term"
+      done
+      open http://www.google.com/search?q=$search
+}
+# vim notes
+#vnote()
+#{
+ #if [[ $PWD/ = */Notes/TEX/* ]]; then
+   #cd ~;
+ #fi
+ #if [ -n "$1" ]; then
+   #VIM_NOTES_TEMPLATE="~/Drive/Notes/template.vnote" vim note:`date +"%Y%m%d"`-"$*";
+ #else
+   #VIM_NOTES_TEMPLATE="~/Drive/Notes/template.vnote" vim note:`date +"%Y%m%d"`;
+ #fi
+#}
+
+# tex’ed notes
+tnote()
+{
+ if [ -n "$1" ]; then
+   NAME="$1";
+   DIR=~/Drive/Notes/TEX/$NAME;
+   mkdir -p $DIR;
+   cd $DIR;
+   if [ -f ~/Drive/Notes/TEX/.template.tex ]; then
+     cp ~/Drive/Notes/TEX/.template.tex $DIR/$NAME.tex;
+     pdflatex $DIR/$NAME.tex > /dev/null;
+     (open -ga skim $DIR/$NAME.pdf &);
+     vim $DIR/$NAME.tex;
+   else 
+     vim $DIR/$NAME.tex;
+   fi
+ else
+   vim +"RecentNotes tex";
+ fi
+}
+
+# lab notes
+#lnote()
+#{
+ #VAR=`date +"%Y-%m"`
+ #if [ ! -f ~/Drive/Notes/LabNotes-$VAR.vnote ]
+ #then
+   #head -n 3 ~/Drive/Notes/template2.vnote > tmp.vnote
+   #grep -rhI 'TODO\|XXX' ~/Drive/Notes >> tmp.vnote
+   #tail -n 7 ~/Drive/Notes/template2.vnote >> tmp.vnote
+   #sed -i '' 's/TODO/MOVED/g' ~/Drive/Notes/*.vnote
+   #sed -i '' 's/XXX/MOVED/g' ~/Drive/Notes/*.vnote
+   #VIM_NOTES_TEMPLATE="tmp.vnote" vim note:LabNotes-$VAR +wq
+   #rm tmp.vnote
+ #fi
+ #vim +"RecentNotes LabNotes" 
+#}
+
+# Jupyter notes
+jnote() {
+  if [ -n "$1" ]
+  then
+    file="$1"
+  else
+    cp ~/Drive/Notes/new-notebook.ipynb ./new-notebook.ipynb
+    file="new-notebook.ipynb"
+  fi
+  jupyter notebook $file &
+}
+# matlab
+# alias matlab='/Applications/MATLAB_R2017a.app/bin/matlab'
+#PATH=/Applications/MATLAB_R2017a.app/bin:$PATH
+#export PATH
