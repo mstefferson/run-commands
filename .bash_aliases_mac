@@ -78,11 +78,12 @@ tnote()
 {
  if [ -n "$1" ]; then
    NAME="$1";
-   DIR=~/Drive/Notes/TEX/$NAME;
+   BASE_DIR=~/Documents/Notes/TEX
+   DIR=$BASE_DIR/$NAME;
    mkdir -p $DIR;
    cd $DIR;
-   if [ -f ~/Drive/Notes/TEX/.template.tex ]; then
-     cp ~/Drive/Notes/TEX/.template.tex $DIR/$NAME.tex;
+   if [ -f $BASE_DIR/.template.tex ]; then
+     cp $BASE_DIR/.template.tex $DIR/$NAME.tex;
      pdflatex $DIR/$NAME.tex > /dev/null;
      (open -ga skim $DIR/$NAME.pdf &);
      vim $DIR/$NAME.tex;
@@ -93,23 +94,6 @@ tnote()
    vim +"RecentNotes tex";
  fi
 }
-
-# lab notes
-#lnote()
-#{
- #VAR=`date +"%Y-%m"`
- #if [ ! -f ~/Drive/Notes/LabNotes-$VAR.vnote ]
- #then
-   #head -n 3 ~/Drive/Notes/template2.vnote > tmp.vnote
-   #grep -rhI 'TODO\|XXX' ~/Drive/Notes >> tmp.vnote
-   #tail -n 7 ~/Drive/Notes/template2.vnote >> tmp.vnote
-   #sed -i '' 's/TODO/MOVED/g' ~/Drive/Notes/*.vnote
-   #sed -i '' 's/XXX/MOVED/g' ~/Drive/Notes/*.vnote
-   #VIM_NOTES_TEMPLATE="tmp.vnote" vim note:LabNotes-$VAR +wq
-   #rm tmp.vnote
- #fi
- #vim +"RecentNotes LabNotes" 
-#}
 
 # Jupyter notes
 jnote() {
@@ -122,7 +106,3 @@ jnote() {
   fi
   jupyter notebook $file &
 }
-# matlab
-# alias matlab='/Applications/MATLAB_R2017a.app/bin/matlab'
-#PATH=/Applications/MATLAB_R2017a.app/bin:$PATH
-#export PATH
