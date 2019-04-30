@@ -20,7 +20,6 @@ Plugin 'vimwiki/vimwiki'
 Plugin 'mattn/calendar-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
@@ -56,20 +55,6 @@ autocmd FileType * setlocal formatoptions -=c formatoptions -=r formatoptions -=
 set shiftwidth=2
 set tabstop=2
 set expandtab
-
-" Syntastic settings
-" recommended
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ["pycodestyle"]
-let g:syntastic_python_flake8_post_args="--max-line-length=120"
-nnoremap <leader>st :SyntasticToggleMode<CR>
 
 " Fix C++ indentation
 setlocal autoindent
