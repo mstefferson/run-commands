@@ -149,7 +149,7 @@ set ruler
 set rulerformat=%55(%{strftime('%a\ %b\ %e\ %I:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
 
 " Set search ignore options
-set wildignore+=*.o,*.fig,*.avi,*.mat,*.default,*.log,*.d,*.aux,*.toc,*.pdf,*.fls,*.fdb_latexmk,*.blg,*.bbl,*.bib,*.png,*.tiff,*.jpg,*.pkl,*.p,*.pickle,*cpkl
+set wildignore+=*.o,*.fig,*.avi,*.mat,*.default,*.log,*.d,*.aux,*.toc,*.pdf,*.fls,*.fdb_latexmk,*.blg,*.bbl,*.bib,*.png,*.tiff,*.jpg,*.pkl,*.p,*.pickle,*cpkl,*h5
 
 autocmd bufenter * if (winnr("$") == 1 && exists("B:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
