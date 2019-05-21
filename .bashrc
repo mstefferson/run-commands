@@ -21,6 +21,11 @@ set -o vi
 # Homebrew
 export PATH=/usr/local/bin:$PATH
 
+# local executeables
+if [ -d "$HOME/bin" ] ; then
+    export PATH="$HOME/bin:$PATH"
+fi
+
 # matlab
 PATH=/Applications/MATLAB_R2017a.app/bin:$PATH
 export PATH
