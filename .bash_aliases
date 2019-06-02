@@ -9,6 +9,7 @@ alias ls='ls --color=auto'
 # python 
 alias pip=pip3
 alias ipython='ipython --TerminalInteractiveShell.editing_mode=vi'
+alias python_todo='grep -R --include *.py "TODO" .'
 
 # docker
 alias rdockerml="sudo docker run --rm -ti -v ${PWD}:/app/ -p 8989:8989 --hostname localhost --ipc=host mstefferson/ml_bot:latest bash"

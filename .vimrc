@@ -20,7 +20,6 @@ Plugin 'vimwiki/vimwiki'
 Plugin 'mattn/calendar-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
@@ -57,20 +56,6 @@ set shiftwidth=2
 set tabstop=2
 set expandtab
 
-" Syntastic settings
-" recommended
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ["pycodestyle"]
-let g:syntastic_python_flake8_post_args="--max-line-length=120"
-nnoremap <leader>st :SyntasticToggleMode<CR>
-
 " Fix C++ indentation
 setlocal autoindent
 setlocal cindent
@@ -102,7 +87,7 @@ let g:SimpylFold_docstring_preview=1
 " doc string full
 map <leader>dsf o"""Short docstring<ENTER><ENTER>Extended Docstring<ENTER><ENTER>Args:<ENTER>var1 (type): Input variable<ENTER><Enter><C-D>Returns:<ENTER>(type): Returned variable<ENTER><ENTER><C-D>"""<ESC>
 " doc string short
-map <leader>dss o"""Short docstring"""<ESC>
+map <leader>dss o""""""<ESC>hhi
 
 " debug
 imap tt<TAB> import ipdb;ipdb.set_trace()
@@ -168,7 +153,7 @@ set ruler
 set rulerformat=%55(%{strftime('%a\ %b\ %e\ %I:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
 
 " Set search ignore options
-set wildignore+=*.o,*.fig,*.avi,*.mat,*.default,*.log,*.d,*.aux,*.toc,*.pdf,*.fls,*.fdb_latexmk,*.blg,*.bbl,*.bib,*.png,*.tiff,*.jpg,*.pkl,*.p,*.pickle,*cpkl
+set wildignore+=*.o,*.fig,*.avi,*.mat,*.default,*.log,*.d,*.aux,*.toc,*.pdf,*.fls,*.fdb_latexmk,*.blg,*.bbl,*.bib,*.png,*.tiff,*.jpg,*.pkl,*.p,*.pickle,*cpkl,*h5
 
 autocmd bufenter * if (winnr("$") == 1 && exists("B:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
