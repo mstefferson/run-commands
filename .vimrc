@@ -97,6 +97,7 @@ nnoremap <space> za
 " simply fold, show doc string
 let g:SimpylFold_docstring_preview=1
 
+
 " Python doc string
 " doc string full
 map <leader>dsf o"""Short docstring<ENTER><ENTER>Extended Docstring<ENTER><ENTER>Args:<ENTER>var1 (type): Input variable<ENTER><Enter><C-D>Returns:<ENTER>(type): Returned variable<ENTER><ENTER><C-D>"""<ESC>
@@ -105,6 +106,9 @@ map <leader>dss o"""Short docstring"""<ESC>
 
 " debug
 imap tt<TAB> import ipdb;ipdb.set_trace()
+
+" hello world print
+map <leader>hw oprint("hello world")<ESC>
 
 " html
 au BufNewFile,BufRead *.ejs set filetype=html
