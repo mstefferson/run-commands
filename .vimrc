@@ -33,6 +33,14 @@ syntax on
 " Let leader key be comma key
 let mapleader=","
 
+" Set invisible characters
+nmap <leader>l :set list!<CR>
+" Set chacters
+set listchars=tab:▸\ ,eol:¬
+"Invisible character colors
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
+
 " Turn on vim autocomplete
 set omnifunc=syntaxcomplete#Complete
 
@@ -104,7 +112,7 @@ au BufNewFile,BufRead *.ejs set filetype=html
 map <leader>n :NERDTreeToggle<CR>
 map <C-p> :CtrlP<CR>
 " Shortcuts for latex 
-map <leader>l :Latexmk<CR>
+map <leader>la :Latexmk<CR>
 map <leader>o :Skim<CR>
 
 " let up and down movement be aware of screen wrap
