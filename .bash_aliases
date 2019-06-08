@@ -17,11 +17,6 @@ alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true 
 alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
 alias docker_kill_ps='docker kill $(docker ps -q)'
 
-dexec()
-{
-  docker exec -it $1 bash
-}
-
 ## ssh and scp
 # divirod
 alias divirod_iot="cd ~/Divirod; ssh -i ~/Divirod/.mikes_key.pem mstefferson@iot.divirod.com"
