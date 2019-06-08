@@ -4,15 +4,17 @@ set -ex
 # build the ssh tunnel
 ssh_port_str=""
 firefox_str=""
+# build arguments
 for port in "${@:2}"
 do
   echo $port
   ssh_port_str="${ssh_port_str}-L $port:localhost:$port "
   echo $ssh_port_str
-  firefox_str="${firefox_str}\"http://localhost:${port}\" "
+  #firefox_str="${firefox_str}\"http://localhost:${port}\" "
+  firefox_str="${firefox_str}http://localhost:${port} "
 done
-echo "ssh alias $1"
 echo "opening these ports ${ssh_port_str}"
 echo "opening these windows ${firefox_str}"
+# run commands
 ssh ${ssh_port_str} $1
-#open -a Firefox ${firefox_str}
+open -a Firefox ${firefox_str}
