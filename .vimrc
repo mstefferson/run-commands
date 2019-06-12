@@ -57,7 +57,9 @@ set number
 set relativenumber             
 
 " Get rid of auto-comment new lines
-autocmd FileType * setlocal formatoptions -=c formatoptions -=r formatoptions -=o
+if has("autocmd")
+  autocmd FileType * setlocal formatoptions -=c formatoptions -=r formatoptions -=o
+endif
 
 " set autoindent spacing to use 2 single whitespaces
 set shiftwidth=2
@@ -163,22 +165,28 @@ set rulerformat=%55(%{strftime('%a\ %b\ %e\ %I:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
 " Set search ignore options
 set wildignore+=*.o,*.fig,*.avi,*.mat,*.default,*.log,*.d,*.aux,*.toc,*.pdf,*.fls,*.fdb_latexmk,*.blg,*.bbl,*.bib,*.png,*.tiff,*.jpg,*.pkl,*.p,*.pickle,*cpkl,*h5
 
-autocmd bufenter * if (winnr("$") == 1 && exists("B:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+if has("autocmd")
+  autocmd bufenter * if (winnr("$") == 1 && exists("B:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" Turn off wrap text for html
-autocmd FileType html setlocal tw=0
+  " Turn off wrap text for html
+  autocmd FileType html setlocal tw=0
 
-" Turn on spell check if .txt, tex, md
-autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en_us
-autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
-autocmd BufNewFile,BufRead *.tex setlocal spell spelllang=en_us
+  " Syntax of these languages is fussy over tabs Vs spaces
+  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
-" Turn on wrap text if .tex
-au BufRead,BufNewFile *.tex setlocal textwidth=80
-autocmd FileType tex setlocal tw=80
+  " Turn on spell check if .txt, tex, md
+  autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en_us
+  autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
+  autocmd BufNewFile,BufRead *.tex setlocal spell spelllang=en_us
+
+  " Turn on wrap text if .tex
+  au BufRead,BufNewFile *.tex setlocal textwidth=80
+  autocmd FileType tex setlocal tw=80
+endif
 
 " line ending
-:set fileformat=unix 
+:set fileformat=unix
 
 " vimwiki - Personal Wiki for Vim
 " https://github.com/vimwiki/vimwiki
