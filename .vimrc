@@ -217,3 +217,22 @@ map <leader>wl <leader>ww<CR>:VimwikiAll2HTML<CR><leader>whh<CR><leader>ww<CR>
 let g:instant_markdown_autostart = 0 " sisable autostart
 map <leader>md :InstantMarkdownPreview<CR>
 map <leader>mdd :!open -a macdown %<CR>
+
+" Strip trailing white spaces
+nnoremap <silent> <leader>sws :call <SID>StripTrailingWhitespaces()<CR>
+if has("autocmd")
+  autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
+endif
+
+" Functions
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
