@@ -92,6 +92,11 @@ nnoremap <space> za
 " simply fold, show doc string
 let g:SimpylFold_docstring_preview=1
 
+" Opening new edits for files in current working directory
+map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
+map <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
+map <leader>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
+map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 " Python doc string
 " doc string full
@@ -163,7 +168,16 @@ set ruler
 set rulerformat=%55(%{strftime('%a\ %b\ %e\ %I:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
 
 " Set search ignore options
-set wildignore+=*.o,*.fig,*.avi,*.mat,*.default,*.log,*.d,*.aux,*.toc,*.pdf,*.fls,*.fdb_latexmk,*.blg,*.bbl,*.bib,*.png,*.tiff,*.jpg,*.pkl,*.p,*.pickle,*cpkl,*h5
+set wildignore+=*.o,*.fig,*.avi,*.mat,*.default,*.log,*.d,*.aux,*.toc,*.pdf,*.fls,*.fdb_latexmk,*.blg,*.bbl,*.bib,*.png,*.tiff,*.jpg,*.pkl,*.p,*.pickle,*cpkl,*h5,*pyc,*pth
+
+" Spelling
+" Toggle spell checking on and off with `,s`
+let mapleader = ","
+nmap <silent> <leader>s :set spell!<CR>
+
+" Set region to British English
+set spelllang=en_us
+
 
 if has("autocmd")
   autocmd bufenter * if (winnr("$") == 1 && exists("B:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -176,9 +190,9 @@ if has("autocmd")
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
   " Turn on spell check if .txt, tex, md
-  autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en_us
-  autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
-  autocmd BufNewFile,BufRead *.tex setlocal spell spelllang=en_us
+  autocmd BufNewFile,BufRead *.txt setlocal spell
+  autocmd BufNewFile,BufRead *.md setlocal spell
+  autocmd BufNewFile,BufRead *.tex setlocal spell
 
   " Turn on wrap text if .tex
   au BufRead,BufNewFile *.tex setlocal textwidth=80
