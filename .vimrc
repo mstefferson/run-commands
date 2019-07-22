@@ -23,6 +23,7 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 
