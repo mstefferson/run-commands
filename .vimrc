@@ -57,10 +57,6 @@ set number
 " Show relative line num
 set relativenumber             
 
-" Get rid of auto-comment new lines
-if has("autocmd")
-  autocmd FileType * setlocal formatoptions -=c formatoptions -=r formatoptions -=o
-endif
 
 " set autoindent spacing to use 2 single whitespaces
 set shiftwidth=2
@@ -72,17 +68,6 @@ setlocal autoindent
 setlocal cindent
 setlocal cinoptions=>s,e0,n0,f0,{0,}0,^0,L-1,:s,=s,l0,b0,gs,hs,ps,ts,is,+s,c3,C0,/0,(2s,us,U0,w0,W0,m0,j0,J0,)20,*70,#0
 
-" Set up python
-"au FileType python setl shiftwidth=4 tabstop=4
-au BufNewFile,BufRead *.py:
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
-    \set encoding=utf-8
 " nerd tree ignores
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 " Enable folding
@@ -181,10 +166,27 @@ set spelllang=en_us
 
 
 if has("autocmd")
+  " Get rid of auto-comment new lines
+  autocmd FileType * setlocal formatoptions -=c formatoptions -=r formatoptions -=o
+
   autocmd bufenter * if (winnr("$") == 1 && exists("B:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
   " Turn off wrap text for html
-  autocmd FileType html setlocal tw=0
+  autocmd BufNewFile,BufRead *.md setlocal tw=88 formatoptions+=a formatoptions+=t
+
+  " Turn off wrap text for html
+  autocmd FileType html setlocal tw=0 formatoptions
+
+  " Set up python
+  au FileType python:
+      \ set tabstop=4
+      \ set softtabstop=4
+      \ set shiftwidth=4
+      \ set textwidth=88
+      \ set expandtab
+      \ set autoindent
+      \ set fileformat=unix
+      \set encoding=utf-8
 
   " Syntax of these languages is fussy over tabs Vs spaces
   autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
@@ -198,6 +200,9 @@ if has("autocmd")
   " Turn on wrap text if .tex
   au BufRead,BufNewFile *.tex setlocal textwidth=80
   autocmd FileType tex setlocal tw=80
+
+  " Strip trailing white spaces
+  autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
 endif
 
 " line ending
@@ -235,9 +240,6 @@ map <leader>mdd :!open -a macdown %<CR>
 
 " Strip trailing white spaces
 nnoremap <silent> <leader>sws :call <SID>StripTrailingWhitespaces()<CR>
-if has("autocmd")
-  autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
-endif
 
 " Functions
 function! <SID>StripTrailingWhitespaces()
