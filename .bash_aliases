@@ -8,6 +8,7 @@ alias ls='ls --color=auto'
 
 # python 
 alias pip=pip3
+alias python=python3
 alias ipython='ipython --TerminalInteractiveShell.editing_mode=vi'
 alias python-todo='grep -R --include *.py "TODO" .'
 
