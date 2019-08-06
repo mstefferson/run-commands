@@ -171,22 +171,22 @@ if has("autocmd")
 
   autocmd bufenter * if (winnr("$") == 1 && exists("B:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-  " Turn off wrap text for html
-  autocmd BufNewFile,BufRead *.md setlocal tw=88 formatoptions+=a formatoptions+=t
+  " Turn off wrap text for markdown
+  au BufNewFile,BufRead *md setl tw=88 fo+=a fo+=t
 
   " Turn off wrap text for html
   autocmd FileType html setlocal tw=0 formatoptions
 
   " Set up python
   au FileType python:
-      \ set tabstop=4
-      \ set softtabstop=4
-      \ set shiftwidth=4
-      \ set textwidth=88
-      \ set expandtab
-      \ set autoindent
-      \ set fileformat=unix
-      \set encoding=utf-8
+      \ setlocal tabstop=4
+      \ setlocal softtabstop=4
+      \ setlocal shiftwidth=4
+      \ setlocal textwidth=88
+      \ setlocal expandtab
+      \ setlocal autoindent
+      \ setlocal fileformat=unix
+      \ setlocal encoding=utf-8
 
   " Syntax of these languages is fussy over tabs Vs spaces
   autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
