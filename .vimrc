@@ -24,6 +24,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-unimpaired'
 
 call vundle#end()
 
