@@ -24,7 +24,8 @@ Plugin 'nvie/vim-flake8'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-abolish'
+Plugin 'easymotion/vim-easymotion'
 
 call vundle#end()
 
@@ -116,10 +117,10 @@ xnoremap <expr> j v:count ? 'j' : 'gj'
 xnoremap <expr> k v:count ? 'k' : 'gk'
 
 " Quick navigation
-nnoremap J 5gj
-nnoremap K 5gk
-xnoremap J 5gj
-xnoremap K 5gk
+"nnoremap J 5gj
+"nnoremap K 5gk
+"xnoremap J 5gj
+"xnoremap K 5gk
 
 " NO AUTO WRAP
 set textwidth=0

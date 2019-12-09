@@ -9,4 +9,4 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 
 # Setting PATH 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-export PATH="/Users/mstefferson/Library/Python/3.7/bin":$PATH
+export PATH="/Users/$USER/Library/Python/3.7/bin":$PATH
