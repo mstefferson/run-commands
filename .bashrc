@@ -1,4 +1,4 @@
-# ~/.bashrc: sourced by .bash_profile and execute by bash(1) for non-login shells 
+# ~/.bashrc: sourced by .bash_profile and execute by bash(1) for non-login shells
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
@@ -25,10 +25,6 @@ export PATH=/usr/local/bin:$PATH
 if [ -d "$HOME/bin" ] ; then
     export PATH="$HOME/bin:$PATH"
 fi
-
-# matlab
-PATH=/Applications/MATLAB_R2017a.app/bin:$PATH
-export PATH
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
