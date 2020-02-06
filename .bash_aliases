@@ -9,7 +9,7 @@ alias ls='ls --color=auto'
 # python 
 alias pip=pip3
 alias python=python3
-alias orb-python='docker run -it -v $PWD:/mnt manifoldai/orbyter-ml-dev:2.0 python'
+alias orbyter='docker run -it -v $PWD:/mnt manifoldai/orbyter-ml-dev:2.0'
 alias ipython='docker run -it manifoldai/orbyter-ml-dev:2.0 ipython --TerminalInteractiveShell.editing_mode=vi'
 alias jn='docker run -it -p 8888:8888 -v $PWD:/mnt manifoldai/orbyter-ml-dev:2.0 jupyter notebook --NotebookApp.token='' --ip=0.0.0.0 --allow-root && /bin/bash'
 
