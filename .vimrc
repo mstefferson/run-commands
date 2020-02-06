@@ -26,6 +26,7 @@ Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-abolish'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'kevinhui/vim-docker-tools'
 
 call vundle#end()
 
