@@ -131,3 +131,5 @@ if [ -f ~/.git-completion.bash ]; then
   export PS1='\u@\h:\w$(__git_ps1 "(%s)") > '
 fi
 
+# Make tab completion
+complete -W "\`grep -oE '^[a-zA-Z0-9_.-]+:([^=]|$)' ?akefile | sed 's/[^a-zA-Z0-9_.-]*$//'\`" make
