@@ -6,3 +6,4 @@ for filename in *; do
 done
 rm -r $HOME/.git
 rm $HOME/start.sh
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
