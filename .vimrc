@@ -25,8 +25,10 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'kevinhui/vim-docker-tools'
+Plugin 'elzr/vim-json'
 
 call vundle#end()
 

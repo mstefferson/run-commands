@@ -131,3 +131,5 @@ if [ -f ~/.git-completion.bash ]; then
   export PS1='\u@\h:\w$(__git_ps1 "(%s)") > '
 fi
 
+PATH=/usr/local/bin/python3:/Users/mstefferson/Library/Python/3.7/bin:/usr/local/bin:/usr/local/sbin:/Users/mstefferson/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:
+PATH=/usr/local/bin/python3:/Users/mstefferson/Library/Python/3.7/bin:/usr/local/bin:/usr/local/sbin:/Users/mstefferson/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/mstefferson/Library/Python/3.7/bin/streamlit
