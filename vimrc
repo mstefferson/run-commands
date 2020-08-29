@@ -258,3 +258,5 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
+
+autocmd BufWritePost *.py call flake8#Flake8()

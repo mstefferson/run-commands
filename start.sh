@@ -1,9 +1,4 @@
 #!/bin/bash
-shopt -s dotglob
-for filename in *; do
-  echo $filename
-  ln -s `pwd`/$filename $HOME/$filename
-done
-rm -r $HOME/.git
-rm $HOME/start.sh
+python start.py
+source ~/.bashrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim

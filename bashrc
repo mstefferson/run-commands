@@ -67,12 +67,21 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+parse_git_branch() {
+ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\]$(parse_git_branch)\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+ PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\$ '
 fi
+
 unset color_prompt force_color_prompt
+
+# git: autocompleteion
+if [ -f ~/.git-completion.sh ]; then
+  source ~/.git-completion.sh
+fi
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -115,21 +124,7 @@ fi
 # Terminal appearance 
 
 # Color
-#export CLICOLOR=1
-#export LSCOLORS=ExFxCxDxBxegedabagacad
-
-LS_COLORS=$LS_COLORS:'di=0;35:'; export LS_COLORS
-
-# Change display name on terminal
-#PS1="\u$ "
-PS1="\u@\h:\w > "
-
-# git: autocompleteion
-if [ -f ~/.git-completion.bash ]; then
-  source ~/.git-completion.bash
-  source ~/.git-prompt.sh
-  export PS1='\u@\h:\w$(__git_ps1 "(%s)") > '
-fi
+export LS_COLORS='no=00:fi=00:di=00;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:';
 
 # Make tab completion
 complete -W "\`grep -oE '^[a-zA-Z0-9_.-]+:([^=]|$)' ?akefile | sed 's/[^a-zA-Z0-9_.-]*$//'\`" make
