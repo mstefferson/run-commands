@@ -24,5 +24,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # git
 alias glog='git log --pretty=format:"%C(yellow)%h %Cred%an %Cblue%ad %Cgreen%d %Creset%s" --date=relative --graph'
+alias git-rm-local='git branch --merged | egrep -v "(^\*|master)" | xargs git branch -d'
 
 alias vd='vi +DockerToolsOpen +bd1 '\''+normal ?'\'''
