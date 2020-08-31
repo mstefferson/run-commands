@@ -6,7 +6,7 @@ from pathlib import Path
 
 home = os.path.expanduser("~")
 
-for prefix in ["bash*", "git-*"]:
+for prefix in ["bash*", "git*"]:
     for f in glob.glob(prefix):
         if "mac" in f:
             print("not copying")
