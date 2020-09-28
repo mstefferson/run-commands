@@ -102,12 +102,8 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-if [ -f ~/.bash_aliases_mac ]; then
-    . ~/.bash_aliases_mac
-fi
-
-if [ -f ~/.bash_aliases_linux ]; then
-    . ~/.bash_aliases_linux
+if [ -f ~/.bash_aliases_local ]; then
+    . ~/.bash_aliases_local
 fi
 
 # enable programmable completion features (you don't need to enable

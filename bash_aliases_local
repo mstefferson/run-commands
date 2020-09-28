@@ -1,0 +1,12 @@
+# docker images
+alias orbyter='docker run -it -v $PWD:/mnt manifoldai/orbyter-ml-dev:2.0'
+alias ipython='docker run -it manifoldai/orbyter-ml-dev:2.0 ipython --TerminalInteractiveShell.editing_mode=vi'
+alias jn='docker run -it -p 8888:8888 -v $PWD:/mnt manifoldai/orbyter-ml-dev:2.0 jupyter notebook --NotebookApp.token='' --ip=0.0.0.0 --allow-root && /bin/bash'
+
+alias dvim='docker run -it -v $PWD:/root/develop/ mstefferson/vim-bot:latest'
+
+# docker help
+alias vd='vi +DockerToolsOpen +bd1 '\''+normal ?'\'''
+alias docker-clean-images='docker rmi $(docker images -a --filter=dangling=true -q)'
+alias docker-clean-ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
+alias docker-kill-ps='docker kill $(docker ps -q)'
