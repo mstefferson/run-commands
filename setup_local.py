@@ -7,7 +7,7 @@ import subprocess
 
 home = os.path.expanduser("~")
 
-for prefix in ["bash*", "git*", "screen*"]:
+for prefix in ["vimrc", "bash*", "git*", "screen*"]:
     for f in glob.glob(prefix):
         copyfile(f, os.path.join(home, f".{f}"))
 
