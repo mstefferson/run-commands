@@ -117,6 +117,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# zfz
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # Terminal appearance 
 
 # Color
