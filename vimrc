@@ -29,6 +29,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'kevinhui/vim-docker-tools'
 Plugin 'elzr/vim-json'
+Plugin 'brooth/far.vim'
 
 call vundle#end()
 
