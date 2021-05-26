@@ -5,7 +5,6 @@ filetype off
 call plug#begin()
 
 Plug 'LaTeX-Box-Team/LaTeX-Box'
-Plug 'taglist.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-sensible'
@@ -38,6 +37,22 @@ syntax on
 
 " Let leader key be space key
 let mapleader=" "
+
+" fzf
+map <leader>sf :Files<CR>
+map <leader>st :Rg<CR>
+
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--inline-info']}), <bang>0)"
+
+ " Make Ripgrep ONLY search file contents and not filenames
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --smart-case --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4.. -e'}, 'right:50%', '?'),
+  \   <bang>0)
+
 
 " Set invisible characters
 nmap <leader>l :set list!<CR>
@@ -106,9 +121,8 @@ au BufNewFile,BufRead *.ejs set filetype=html
 
 :command! Skim execute ':silent! !open -ga skim %:r.pdf' | execute ':redraw!'
 
-" Shortcuts for NERDTree, TagBar, and CtrlP
+" Shortcuts for NERDTree, TagBar
 map <leader>n :NERDTreeToggle<CR>
-map <C-p> :CtrlP<CR>
 " Shortcuts for latex 
 map <leader>la :Latexmk<CR>
 map <leader>o :Skim<CR>
