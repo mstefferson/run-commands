@@ -1,44 +1,43 @@
 
 " Plugins
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
-Plugin 'taglist.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-sensible'
-Plugin 'ervandew/supertab'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'xolox/vim-notes'
-Plugin 'xolox/vim-misc'
-Plugin 'othree/html5.vim'
-Plugin 'vimwiki/vimwiki' 
-Plugin 'mattn/calendar-vim'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'nvie/vim-flake8'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'kevinhui/vim-docker-tools'
-Plugin 'elzr/vim-json'
-Plugin 'brooth/far.vim'
+call plug#begin()
 
-call vundle#end()
+Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'taglist.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-sensible'
+Plug 'ervandew/supertab'
+Plug 'airblade/vim-gitgutter'
+Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
+Plug 'othree/html5.vim'
+Plug 'vimwiki/vimwiki' 
+Plug 'mattn/calendar-vim'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'nvie/vim-flake8'
+Plug 'tmhedberg/SimpylFold'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-unimpaired'
+Plug 'easymotion/vim-easymotion'
+Plug 'kevinhui/vim-docker-tools'
+Plug 'elzr/vim-json'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+call plug#end()
 
 filetype on
 filetype plugin indent on
 syntax on
 
-" Let leader key be comma key
-let mapleader=","
+" Let leader key be space key
+let mapleader=" "
 
 " Set invisible characters
 nmap <leader>l :set list!<CR>
