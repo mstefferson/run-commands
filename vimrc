@@ -34,6 +34,10 @@ Plug 'kevinhui/vim-docker-tools'
 Plug 'elzr/vim-json'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+# If having issues with jedi, make sure you see python installed with vim
+# `vim --version | grep python`
+# This may mean reinstalling vim via homebrew on a mac
+Plug 'davidhalter/jedi-vim'
 
 call plug#end()
 
