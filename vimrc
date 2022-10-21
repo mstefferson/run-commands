@@ -18,8 +18,7 @@ Plug 'ervandew/supertab'
 Plug 'airblade/vim-gitgutter'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
-Plug 'othree/html5.vim'
-Plug 'vimwiki/vimwiki' 
+Plug 'vimwiki/vimwiki'
 Plug 'mattn/calendar-vim'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/indentpython.vim'
@@ -33,11 +32,9 @@ Plug 'easymotion/vim-easymotion'
 Plug 'kevinhui/vim-docker-tools'
 Plug 'elzr/vim-json'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-# If having issues with jedi, make sure you see python installed with vim
-# `vim --version | grep python`
-# This may mean reinstalling vim via homebrew on a mac
 Plug 'davidhalter/jedi-vim'
+Plug 'Valloric/MatchTagAlways'
+Plug 'vim-autoformat/vim-autoformat'
 
 call plug#end()
 
@@ -53,15 +50,15 @@ map <leader>sf :Files<CR>
 map <leader>st :Rg<CR>
 
 command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--inline-info']}), <bang>0)"
+      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--inline-info']}), <bang>0)"
 
- " Make Ripgrep ONLY search file contents and not filenames
+" Make Ripgrep ONLY search file contents and not filenames
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --smart-case --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
-  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4.. -e'}, 'right:50%', '?'),
-  \   <bang>0)
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --smart-case --no-heading --color=always '.shellescape(<q-args>), 1,
+      \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+      \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4.. -e'}, 'right:50%', '?'),
+      \   <bang>0)
 
 
 " Set invisible characters
@@ -83,9 +80,9 @@ set tags=./tags;/
 
 " relative number
 " Show current line number
-set number                     
+set number
 " Show relative line num
-set relativenumber             
+set relativenumber
 
 
 " set autoindent spacing to use 2 single whitespaces
@@ -120,9 +117,6 @@ map <leader>dsf o"""Short docstring<ENTER><ENTER>Extended Docstring<ENTER><ENTER
 " doc string short
 map <leader>dss o""""""<ESC>hhi
 
-" debug
-imap tt<TAB> import ipdb;ipdb.set_trace()
-
 " hello world print
 map <leader>hw oprint("hello world")<ESC>
 
@@ -133,7 +127,7 @@ au BufNewFile,BufRead *.ejs set filetype=html
 
 " Shortcuts for NERDTree, TagBar
 map <leader>n :NERDTreeToggle<CR>
-" Shortcuts for latex 
+" Shortcuts for latex
 map <leader>la :Latexmk<CR>
 map <leader>o :Skim<CR>
 
@@ -153,9 +147,6 @@ xnoremap <expr> k v:count ? 'k' : 'gk'
 set textwidth=0
 set wrapmargin=0
 :set linebreak
-
-" Insert current date followed by day of the week
-imap dd<TAB> <C-R>=strftime("%Y%m%d %A")<CR>
 
 " Quickly resize vertical splits
 nnoremap <leader>> <C-w>10>
@@ -187,51 +178,60 @@ set wildignore+=*.o,*.fig,*.avi,*.mat,*.default,*.log,*.d,*.aux,*.toc,*.pdf,*.fl
 
 " Spelling
 " Toggle spell checking on and off with `,s`
-let mapleader = ","
 nmap <silent> <leader>s :set spell!<CR>
 
 " Set region to British English
 set spelllang=en_us
 
+" Formatters
+
+let g:formatter_html = 'html-beautify'
 
 if has("autocmd")
   " Get rid of auto-comment new lines
-  autocmd FileType * setlocal formatoptions -=c formatoptions -=r formatoptions -=o
+  au FileType * setlocal formatoptions -=c formatoptions -=r formatoptions -=o
 
-  autocmd bufenter * if (winnr("$") == 1 && exists("B:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+  au bufenter * if (winnr("$") == 1 && exists("B:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
   " Turn off wrap text for markdown
-  au BufNewFile,BufRead *md setl tw=88 fo+=a fo+=t
-
-  " Turn off wrap text for html
-  autocmd FileType html setlocal tw=0 formatoptions
+  " au BufNewFile,BufRead *md setl tw=88 fo+=a fo+=t
+  let verbose=1
 
   " Set up python
   au FileType python:
-      \ setlocal tabstop=4
-      \ setlocal softtabstop=4
-      \ setlocal shiftwidth=4
-      \ setlocal textwidth=88
-      \ setlocal expandtab
-      \ setlocal autoindent
-      \ setlocal fileformat=unix
-      \ setlocal encoding=utf-8
+        \ setlocal tabstop=4
+        \ setlocal softtabstop=4
+        \ setlocal shiftwidth=4
+        \ setlocal textwidth=88
+        \ setlocal expandtab
+        \ setlocal autoindent
+        \ setlocal fileformat=unix
+        \ setlocal encoding=utf-8
 
   " Syntax of these languages is fussy over tabs Vs spaces
-  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+  au FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
   " Turn on spell check if .txt, tex, md
-  autocmd BufNewFile,BufRead *.txt setlocal spell
-  autocmd BufNewFile,BufRead *.md setlocal spell
-  autocmd BufNewFile,BufRead *.tex setlocal spell
+  au BufNewFile,BufRead *.txt setlocal spell
+  au BufNewFile,BufRead *.md setlocal spell
+  au BufNewFile,BufRead *.tex setlocal spell
 
   " Turn on wrap text if .tex
-  au BufRead,BufNewFile *.tex setlocal textwidth=80
-  autocmd FileType tex setlocal tw=80
+  au BufRead,BufNewFile *.tex setlocal textwidth=88
+  au FileType tex setlocal tw=88
 
   " Strip trailing white spaces
-  autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
+  au BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
+
+  " I don't understand this, but autoformatter with markdown unintends nested list
+  " this fixed it
+  let b:autoformat_autoindent = 0
+  let g:autoformat_retab = 00
+  let g:autoformat_remove_trailing_spaces = 0
+
+  au BufWritePre * :Autoformat
+  au BufWritePost *.py call flake8#Flake8()
 endif
 
 " line ending
@@ -254,7 +254,7 @@ let vim_wiki = {}
 let vim_wiki.path = '~/Documents/Notes/vim_wiki/'
 let vim_wiki.syntax = 'markdown'
 let vim_wiki.ext = '.md'
-let g:instant_markdown_autostart = 0 
+let g:instant_markdown_autostart = 0
 map <leader>md :InstantMarkdownPreview<CR>
 
 " Make a list of vim wikis so you can have multiples [wiki1, wiki2,..]
@@ -272,15 +272,14 @@ nnoremap <silent> <leader>sws :call <SID>StripTrailingWhitespaces()<CR>
 
 " Functions
 function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
 endfunction
 
-autocmd BufWritePost *.py call flake8#Flake8()
