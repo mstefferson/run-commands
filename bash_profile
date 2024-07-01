@@ -9,5 +9,8 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 
 # Setting PATH 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-export PATH="/Users/$USER/Library/Python/3.7/bin":$PATH
 export PATH="/usr/local/bin/python3":$PATH
+
+# Homebrew
+export PATH=/usr/local/bin:$PATH
+export PATH=/opt/homebrew/bin:$PATH

@@ -18,9 +18,6 @@ shopt -s histappend
 # set vi mode in bash  (need to edit .inputrc)
 set -o vi
 
-# Homebrew
-export PATH=/usr/local/bin:$PATH
-
 # local executeables
 if [ -d "$HOME/bin" ] ; then
     export PATH="$HOME/bin:$PATH"
